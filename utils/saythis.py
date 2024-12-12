@@ -1,22 +1,31 @@
 from sys import stdout
 from time import sleep
 
-def narrating(text: str):
+def narrating(text: str) -> None:
     text_lines = text.split("\n")
     for line in text_lines:
         talk(line, 0.03)
         sleep( len(line) / 40 )
 
-def gently(message: str):
+def gently(message: str) -> None:
     talk(message, 0.08)
 
-def normally(message: str):
+def normally(message: str) -> None:
     talk(message, 0.06)
 
-def screaming(message: str):
+def slowly(message: str) -> None:
+    talk(message, 0.03)
+
+def screaming(message: str) -> None:
     talk(message.upper() , 0.3)
 
-def talk(message: str, speed: float):
+def talk(message: str, speed: float) -> None:
+    """Slowly prints a message, character by character, pausing between characters.
+
+    Args:
+        message (str): The message to be printed character by character
+        speed (float): Waiting period between characters. Recommended to be between 0.01 (regular speed) and 0.03 (really slow)
+    """
     for char in message:
         if char == " ":
             sleep(0.02)
@@ -43,5 +52,3 @@ if __name__ == "__main__":
     print("Testing scream")
     screaming(scream)
     print("End test")
-
-
